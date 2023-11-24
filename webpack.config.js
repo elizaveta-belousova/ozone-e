@@ -38,6 +38,7 @@ module.exports = function (env, args) {
             "css-loader"
           ],
         },
+  
       ],
     },
   };

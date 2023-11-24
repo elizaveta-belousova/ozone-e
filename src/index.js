@@ -1,13 +1,11 @@
-import './styles/style.css';
-import './index.html';
+import "./styles/style.css";
+import "./index.html";
 
-function a(b, c) {
-  return b + c;
-}
+import catalogOld from "./modules/catalogOld";
+import { openCart } from "./modules/cart/openCart";
+import renderCatalog from "./modules/catalog/renderCatalog";
 
 
-console.log("REPLACEMENT 6");
-
-console.log(a(5,4));
-console.log(a(5,6));
-
+catalogOld();
+openCart();
+renderCatalog();
