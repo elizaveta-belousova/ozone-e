@@ -1,11 +1,11 @@
 import "./styles/style.css";
 import "./index.html";
 
-import catalogOld from "./modules/catalogOld";
+import categoryMenu from "./modules/catalog/categoryMenu";
 import { openCart } from "./modules/cart/openCart";
 import renderCatalog from "./modules/catalog/renderCatalog";
 
 
-catalogOld();
+categoryMenu();
 openCart();
 renderCatalog();

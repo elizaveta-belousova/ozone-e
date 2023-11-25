@@ -10,6 +10,7 @@ class Catalog {
       max: null,
     },
     sale: null,
+    category: "",
   };
 
   constructor() {
@@ -44,6 +45,14 @@ class Catalog {
       .querySelector(".filter-checkbox__real")                              
       .addEventListener("change", async (event) => {
         this.filter.sale = event.target.checked == true ? true : null;
+        await this.loadGoods();
+        this.render();
+      });
+      
+      document
+      .querySelector(".catalog__list")                              
+      .addEventListener("click", async (event) => {
+        this.filter.category = event.target.innerText    //записала: Игры и софт/Переферия для ПК...
         await this.loadGoods();
         this.render();
       });

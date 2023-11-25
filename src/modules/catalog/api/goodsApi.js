@@ -208,25 +208,32 @@ export async function getAll(filter) {
       img: "https://cdn1.ozone.ru/multimedia/c400/1023547851.jpg",
       category: "Игры и софт",
     },
-  ].filter((good) => {
-    return good.title.toLowerCase().includes(filter.title.toLowerCase());
-   
-  }).filter((good) => {
-    if (filter.price.min == null || filter.price.min == 0) {
-      return true;
-    } else {
-      return filter.price.min <= good.price;
-    }
-
-  }).filter((good) => {
-    if (filter.price.max == null || filter.price.max == 0) {
-      return true;
-    } else {
-      return filter.price.max >= good.price; 
-    }
-
-  }).filter((good) => {
-    return filter.sale != null ? filter.sale == good.sale : true;
-   
-  })
+  ]
+    .filter((good) => {
+      return good.title.toLowerCase().includes(filter.title.toLowerCase());
+    })
+    .filter((good) => {
+      if (filter.price.min == null || filter.price.min == 0) {
+        return true;
+      } else {
+        return filter.price.min <= good.price;
+      }
+    })
+    .filter((good) => {
+      if (filter.price.max == null || filter.price.max == 0) {
+        return true;
+      } else {
+        return filter.price.max >= good.price;
+      }
+    })
+    .filter((good) => {
+      return filter.sale != null ? filter.sale == good.sale : true;
+    })
+    .filter((good) => {
+      return filter.category.length !== 0
+        ? filter.category
+            .toLowerCase()
+            .includes(good.category.toLowerCase())
+        : true;
+    });
 }
