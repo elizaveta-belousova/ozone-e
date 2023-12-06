@@ -1,5 +1,7 @@
 import { getAll } from "./api/goodsApi";
 import renderGoods from "./renderGoods";
+import cartModel from "../cart/cartModel";
+import renderCart from "../cart/renderCart";
 
 class Catalog {
   goods = [];
@@ -55,6 +57,24 @@ class Catalog {
         this.filter.category = event.target.innerText    //записала: Игры и софт/Переферия для ПК...
         await this.loadGoods();
         this.render();
+      });
+
+      //корзина
+      document
+      .querySelector(".main__goods")
+      .addEventListener("click", (event) => {
+        if (event.target.className === 'main-goods__button') {
+          cartModel.add(event.target.dataset.cardid);                 //записываю id товара по клику
+          //renderCart()
+        }
+      });
+
+      document
+      .querySelector(".cart-body__goods")
+      .addEventListener("click", (event) => {
+        if (event.target.className === 'main-mark-group__delete') {
+          cartModel.remove(event.target.dataset.cardid)                 //удаляю id товара по клику
+        }
       });
   }
 

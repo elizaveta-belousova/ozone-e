@@ -27,8 +27,8 @@ function renderGoods(goods) {
             </div>
           </a>
         </div>
-        <button class="main-goods__button">
-          Оформить заказ
+        <button class="main-goods__button" data-cardId="${good.id}">
+          Добавить в корзину
         </button>
       </div>
     </div>
