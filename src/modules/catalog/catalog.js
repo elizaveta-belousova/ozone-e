@@ -1,7 +1,7 @@
 import { getAll } from "./api/goodsApi";
 import renderGoods from "./renderGoods";
 import cartModel from "../cart/cartModel";
-import renderCart from "../cart/renderCart";
+import cart from "../cart/cart";
 
 class Catalog {
   goods = [];
@@ -65,17 +65,10 @@ class Catalog {
       .addEventListener("click", (event) => {
         if (event.target.className === 'main-goods__button') {
           cartModel.add(event.target.dataset.cardid);                 //записываю id товара по клику
-          //renderCart()
         }
+        cart.counterBasket();
       });
 
-      document
-      .querySelector(".cart-body__goods")
-      .addEventListener("click", (event) => {
-        if (event.target.className === 'main-mark-group__delete') {
-          cartModel.remove(event.target.dataset.cardid)                 //удаляю id товара по клику
-        }
-      });
   }
 
   async loadGoods() {
@@ -83,7 +76,7 @@ class Catalog {
   }
 
   render() {
-    console.log(this.goods)
+    console.log(111111111111,this.goods)
     document.querySelector(".main__goods").innerHTML = renderGoods(this.goods);  //запускаю рендер с отфильтрованными товарами лежащии в goods
   }
 }
